@@ -1,0 +1,7 @@
+#!/bin/sh
+
+cd "$(dirname "$0")/_site"
+git add --all
+git commit -m "Update the site"
+git push
+

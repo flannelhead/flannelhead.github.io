@@ -1,0 +1,4 @@
+[submodule "_site"]
+	path = _site
+	url = git@github.com:flannelhead/flannelhead.github.io.git
+	branch = master
