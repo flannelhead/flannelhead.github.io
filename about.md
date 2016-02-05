@@ -6,5 +6,3 @@ Hi! I'm Sakari Kapanen *aka* flannelhead. I'm studying physics, and in my leisur
 Aside from completed projects, I try to provide an insight to the whole trial and error process which is often unavoidable even in simple projects. However, this process is also invaluable as making mistakes is often the best way to learn.
 
 This site is static (aside from equations rendered with [MathJax](https://www.mathjax.org)) and generated with [Hakyll](https://jaspervdj.be/hakyll/). This is a great way to keep things simple, lightweight and fast. I have also another, photography related site which is written in Finnish which you can visit [here](http://www.pimeyspurkissa.fi).
-
-I've taken advantage of some modern HTML and CSS techniques in the layout, so if the layout seems incorrect, your browser might be too old.
