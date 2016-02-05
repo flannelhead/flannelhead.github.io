@@ -1,0 +1,6 @@
+#!/bin/sh
+
+stack build
+stack exec flannelheads-lab clean
+stack exec flannelheads-lab watch
+
