@@ -8,4 +8,10 @@ title: Welcome
 have a look at the <a href="/projects.html">Projects</a> page.
 
 <h2>Posts</h2>
-$partial("templates/post-list.html")$
+<ul>
+    $for(posts)$
+        <li>
+            <a href="$url$">$title$</a> - $date$
+        </li>
+    $endfor$
+</ul>
