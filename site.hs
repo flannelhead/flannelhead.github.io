@@ -1,9 +1,14 @@
 {-# LANGUAGE OverloadedStrings #-}
 import Data.Monoid ((<>))
 import Hakyll
+import Text.Pandoc.Options
 
 main :: IO ()
 main = hakyll $ do
+    let pandocMathCompiler =
+            let pandocOptions = defaultHakyllWriterOptions
+                    { writerHTMLMathMethod = MathJax "" }
+            in pandocCompilerWith defaultHakyllReaderOptions pandocOptions
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -24,14 +29,14 @@ main = hakyll $ do
 
     match "posts/*" $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ pandocMathCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
     match "projects/*" $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ pandocMathCompiler
             >>= loadAndApplyTemplate "templates/project.html" defaultContext
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
