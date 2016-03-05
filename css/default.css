@@ -5,6 +5,11 @@ body {
     margin: 0px auto 0px auto;
     max-width: 800px;
     padding: 0 16px;
+    background-color: #fffcf2;
+}
+
+body, h1#logo a, #navigation a {
+    color: #002b36;
 }
 
 #logo, #navigation {
@@ -16,18 +21,28 @@ body {
 }
 
 h1#logo a {
-    color: black;
     text-decoration: none;
 }
 
 #navigation a {
     display: inline-block;
-    color: black;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
     margin-right: 8px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link, a:visited {
+    color: #268bd2;
+}
+
+a:hover {
+    color: #b58900;
 }
 
 h1 {
