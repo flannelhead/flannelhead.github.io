@@ -44,7 +44,7 @@ Let's try to think about this in curved spacetimes. The first problem we encount
 
 Returning to the case of the free photon, it can be actually proven that photons move along geodesics. Moreover, for these geodesics $\mathrm{d}s^2 = 0$ &mdash; they are called *null* geodesics.
 
-The next questions is if we do have a means of computing the geodesics. If you have done any variational calculus or Lagrangian mechanics, minimizing the path length might sound familiar. Let's try and formulate this as a variational problem! We could take an [action](https://en.wikipedia.org/wiki/Action_%28physics%29) corresponding to the path length and parametrize it by some parameter $\lambda$:
+The next question is if we have a means of computing the geodesics. If you have done any variational calculus or Lagrangian mechanics, minimizing the path length might sound familiar. Let's try and formulate this as a variational problem! We could take an [action](https://en.wikipedia.org/wiki/Action_%28physics%29) corresponding to the path length and parametrize it by some parameter $\lambda$:
 $$ S = \int \mathrm{d}s 
 = \int \frac{\mathrm{d}s}{\mathrm{d}\lambda}\,\mathrm{d}\lambda
 = \int \sqrt{\left(
