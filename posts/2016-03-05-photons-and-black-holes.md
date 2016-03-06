@@ -101,13 +101,13 @@ Much simpler, isn't it? As orbits are what we are going to discuss here, we have
 Let us then try our luck with the geodesic (Euler-Lagrange) equations. The Lagrangian is
 $$ L = -\left(1 - \frac{1}{r}\right)\dot{t}^2
 + \left(1 - \frac{1}{r}\right)^{-1}\dot{r}^2
-+ r^2 \dot{\phi}.$$
++ r^2 \dot{\phi}^2.$$
 The ELE for the $t$ coordinate gives
 $$ \frac{\partial L}{\partial t} - \frac{\mathrm{d}}{\mathrm{d}\lambda}
 \frac{\partial L}{\partial \dot{t}}
 = 0 - \frac{\mathrm{d}}{\mathrm{d}\lambda}
 \left[\left(1 - \frac{1}{r}\right)\dot{t}\right] = 0.$$
-This tells us that there is a quantity whose derivative vanishes, in other words it remains constant with respect to the curve parameter $\lambda$. Quantities like this are called constants of motion. We can call it $k$:
+This tells us that there is a quantity whose derivative vanishes, in other words it remains constant with respect to the curve parameter $\lambda$. Quantities like this are called *constants of motion*. We can call it $k$:
 $$ k \equiv \left(1 - \frac{1}{r}\right)\dot{t}. $$
 We got this result because the Lagrangian didn't explicitly depend on time. Thus, this constant of motion corresponds to the invariance of the Lagrangian in translations of time. Based on our prior knowledge on classical dynamics, we may conclude that this constant $k$ must be somehow related to the energy.
 
@@ -119,3 +119,29 @@ $$ \frac{\partial L}{\partial \phi} - \frac{\mathrm{d}}{\mathrm{d}\lambda}
 It seems there indeed is another constant of motion, namely
 $$ h \equiv r^2 \dot{\phi}.$$
 As $\phi$ the angle with respect to the rotation axis of the orbital motion, $h$ is clearly related to the angular momentum, which is conserved.
+
+Now, remembering that we defined the Lagrangian as
+$$ L = \left( \frac{\mathrm{d}s}{\mathrm{d}\lambda} \right)^2, $$
+and restricting the discussion strictly to lightlike curves, $\mathrm{d}s^2 = 0$, we find
+$$ L = \left( 1 - \frac{1}{r} \right)^{-1} (\dot{r}^2 - k^2) + \frac{h^2}{r^2} = 0, $$
+where we used the constants of motion to eliminate $\dot{t}$ and $\dot{\phi}$. We're left with a relatively simple differential equation for $r$! Manipulating it a little bit further and multiplying through by $\frac{1}{2}$ we get
+$$
+\frac{1}{2}k^2 = \frac{1}{2}\dot{r}^2 + \frac{h^2}{2r^2} - \frac{h^2}{2r^3}.
+$$
+At this point, we must squint a little bit. If we take a Newtonian particle with $m = 1$ in one-dimensional motion (in the coordinate $r$), $\frac{1}{2} \dot{r}^2$ seems to be the kinetic energy of the particle. On the other hand, earlier we recognized $k$ as an energy quantity. The above equation then seems to be analogous with the energy conservation law of a Newtonian system, where we can identify the potential energy as
+$$
+V(r) = \frac{h^2}{2r^2} - \frac{h^2}{2r^3}.
+$$
+The first term looks familiar. If we take $h$ as the classical angular momentum, it *is* the [effective "centrifugal" potential](https://en.wikipedia.org/wiki/Effective_potential) that is used when describing particles in central force fields. The analogy feels right, since $h = r^2 \dot{\phi}$ seems just like the classical angular momentum of a particle with $m = 1$. The choice of a non-inertial (rotating) frame of reference gives rise to this effective potential, and in some inertial frame it will vanish.
+
+The latter term, $-\frac{h^2}{2r^3}$, is something new to us. It is a radial $\frac{1}{r^3}$-potential which is coupled to the particle by its angular momentum. This is a genuinely an effect of general relativity, and it is responsible for the bending of light near massive bodies, leading to the gravitational lensing effect.
+
+Going just a tad further and switching to a three-dimensional inertial frame of reference, the potential becomes just the simple
+$$ V(r) = -\frac{h^2}{2r^3}. $$
+Finally, we may write Newton's second law for our little "test particle" as
+$$ \mathbf{F}(\mathbf{r}) = -\nabla V(r)
+= -\frac{3}{2} h^2 \frac{\hat{\mathbf{r}}}{r^4} = \ddot{\mathbf{r}}, $$
+where $\mathbf{r} = (x, y, z)$ are the Cartesian coordinates of the particle,
+$\hat{\mathbf{r}}$ is the unit direction vector, $\ddot{\mathbf{r}}$ is the acceleration and $r = \vert \mathbf{r} \vert$.
+
+Let me remind you that these are not the real equations of motion for the photon. The real equations of motion would have been achieved by calculating all of the geodesic equations from the Lagrangian. There are four of them instead of the three equations (in vector form) above. However, the three spatial equations will generate the exact same time evolution as the real geodesic equations would, and they were relatively easily achieved.
