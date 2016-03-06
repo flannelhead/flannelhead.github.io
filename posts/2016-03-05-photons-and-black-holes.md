@@ -72,7 +72,7 @@ $$ \frac{\partial L}{\partial t} - \frac{\mathrm{d}}{\mathrm{d}\lambda}
 $$
 The solution to this is $t(\lambda) = a\lambda + b$, where $a, b$ are constants that will be fixed by the initial conditions. Ok, so the time coordinate is a linear function of the curve parameter? Seems fine, let's proceed with the spatial coordinates. The equations for $x, y, z$ will be identical:
 $$\frac{\mathrm{d}^2 x}{\mathrm{d}\lambda^2} = 0,$$
-and thus we'll have $x(\lambda) = c\lambda + d$, where $c, d$ will be again bound by the initial conditions. What do we have here is a linear function of $\lambda$ $\iff$ *a straight line*. Hooray! The geodesics of a flat spacetime *are* straight lines! Backward checks like this are often useful when trying to generalize a concept.
+and thus we'll have $x(\lambda) = c\lambda + d$, where $c, d$ will be again bound by the initial conditions. What do we have here is a linear function of $\lambda$ $\iff$ *a straight line*. Hooray! The geodesics of a flat spacetime *are* straight lines! Backward checks like this are often useful when trying to generalize a mathematical concept.
 
 ### The Schwarzschild metric
 
