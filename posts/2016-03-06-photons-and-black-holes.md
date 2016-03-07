@@ -134,7 +134,7 @@ V(r) = \frac{h^2}{2r^2} - \frac{h^2}{2r^3}.
 $$
 The first term looks familiar. If we take $h$ as the classical angular momentum, it *is* the [effective "centrifugal" potential](https://en.wikipedia.org/wiki/Effective_potential) that is used when describing particles in central force fields. The analogy feels right, since $h = r^2 \dot{\phi}$ seems just like the classical angular momentum of a particle with $m = 1$. The choice of a non-inertial (rotating) frame of reference gives rise to this effective potential, and in some inertial frame it will vanish.
 
-The latter term, $-\frac{h^2}{2r^3}$, is something new to us. It is a radial $\frac{1}{r^3}$-potential which is coupled to the particle by its angular momentum. This is a genuinely an effect of general relativity, and it is responsible for the bending of light near massive bodies, leading to the gravitational lensing effect.
+The latter term, $-\frac{h^2}{2r^3}$, is something new to us. It is a radial $\frac{1}{r^3}$-potential which is coupled to the particle by its angular momentum. This is genuinely an effect of general relativity, and it is responsible for the bending of light near massive bodies, leading to the gravitational lensing effect.
 
 Going just a tad further and switching to a three-dimensional inertial frame of reference, the potential becomes just the simple
 $$ V(r) = -\frac{h^2}{2r^3}. $$
