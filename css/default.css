@@ -56,3 +56,8 @@ h2 {
 .normalweight {
     font-weight: normal;
 }
+
+p.caption {
+    font-style: italic;
+    margin-top: 0;
+}
