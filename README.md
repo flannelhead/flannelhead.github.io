@@ -7,7 +7,7 @@ The Hakyll source files reside in the `src` branch of this repo. The `master` br
 ## Scripts
 There are several utility scripts:
 
-* `blog` runs the site generator with the arguments supplied by the user, ensuring the generator itself is up-to-date.
+* `site` runs the site generator with the arguments supplied by the user, ensuring the generator itself is up-to-date.
 * `clean` removes the generated files and the Hakyll cache in a submodule-aware manner.
 * `deploy` pushes the generated site to upstream.
 

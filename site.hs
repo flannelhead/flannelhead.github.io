@@ -9,6 +9,7 @@ main = hakyll $ do
             let pandocOptions = defaultHakyllWriterOptions
                     { writerHTMLMathMethod = MathJax "" }
             in pandocCompilerWith defaultHakyllReaderOptions pandocOptions
+
     match "images/*" $ do
         route   idRoute
         compile copyFileCompiler
