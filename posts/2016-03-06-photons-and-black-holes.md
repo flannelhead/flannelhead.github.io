@@ -123,7 +123,10 @@ $$ \frac{\partial L}{\partial \phi} - \frac{\mathrm{d}}{\mathrm{d}\lambda}
 = 0 - \frac{\mathrm{d}}{\mathrm{d}\lambda}
 \left(2r^2 \dot{\phi}\right) = 0.$$
 It seems there indeed is another constant of motion, namely
-$$ h \equiv r^2 \dot{\phi}.$$
+$$
+\label{eq:angular}
+h \equiv r^2 \dot{\phi}.
+$$
 As $\phi$ the angle with respect to the rotation axis of the orbital motion, $h$ is clearly related to the angular momentum, which is conserved.
 
 Now, remembering that we defined the Lagrangian as
@@ -133,6 +136,7 @@ $$ L = \left( 1 - \frac{1}{r} \right)^{-1} (\dot{r}^2 - k^2) + \frac{h^2}{r^2} =
 where we used the constants of motion to eliminate $\dot{t}$ and $\dot{\phi}$. We're left with a relatively simple differential equation for $r$. We have effectively reduced the description of the motion to just the radial coordinate! Manipulating the equation a little bit further and multiplying through by $\frac{1}{2}$ we get
 $$
 \frac{1}{2}k^2 = \frac{1}{2}\dot{r}^2 + \frac{h^2}{2r^2} - \frac{h^2}{2r^3}.
+\label{eq:radial}
 $$
 At this point, we must squint a little bit. If we take a Newtonian particle with $m = 1$ in one-dimensional motion (in the coordinate $r$), $\frac{1}{2} \dot{r}^2$ seems to be the kinetic energy of the particle. On the other hand, earlier we recognized $k$ as an energy quantity. The above equation then seems to be analogous with the energy conservation law of a Newtonian system, where we can identify the potential energy as
 $$
@@ -146,7 +150,9 @@ Going just a tad further and switching to a three-dimensional inertial frame of 
 $$ V(r) = -\frac{h^2}{2r^3}. $$
 Finally, we may write Newton's second law for our little "test particle" as
 $$ \mathbf{F}(\mathbf{r}) = -\nabla V(r)
-= -\frac{3}{2} h^2 \frac{\hat{\mathbf{r}}}{r^4} = \ddot{\mathbf{r}}, $$
+= -\frac{3}{2} h^2 \frac{\hat{\mathbf{r}}}{r^4} = \ddot{\mathbf{r}},
+\label{eq:eom}
+$$
 where $\mathbf{r} = (x, y, z)$ are the Cartesian coordinates of the particle,
 $\hat{\mathbf{r}}$ is the unit direction vector, $\ddot{\mathbf{r}}$ is the acceleration and $r = \vert \mathbf{r} \vert$.
 
