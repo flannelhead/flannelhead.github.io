@@ -1,9 +1,8 @@
 body {
-    color: black;
     font-size: 16px;
     font-family: "PT Sans", sans-serif;
     margin: 0px auto 0px auto;
-    max-width: 800px;
+    max-width: 960px;
     padding: 0 16px;
     background-color: #fffcf2;
 }
@@ -17,7 +16,7 @@ body, h1#logo a, #navigation a {
 }
 
 #logo {
-    margin-right: 16px;
+    margin-right: 32px;
 }
 
 h1#logo a {
@@ -60,4 +59,12 @@ h2 {
 p.caption {
     font-style: italic;
     margin-top: 0;
+}
+
+.figure {
+    text-align: center;
+}
+
+.figure > img {
+    max-width: 100%;
 }
