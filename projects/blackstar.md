@@ -9,7 +9,7 @@ When I saw [Interstellar](http://www.imdb.com/title/tt0816692/) in 2014, I was e
 
 Then, a few months later, [rantonels](http://rantonels.github.io/)' [excellent article](http://rantonels.github.io/starless/) and [Python code](https://github.com/rantonels/starless) appeared on [Hacker News](https://news.ycombinator.com/). You should definitely check out the article and the code &mdash; they're awesome and you'll most likely learn a lot!
 
-As a numerical physics enthusiast, I began wondering if I could render such images myself. By the time, however, I wasn't skilled enough in general relativity grasp the theoretical side. I then noticed there was going to be a general relativity course held at my university next year. I decided to wait until that.
+As a numerical physics enthusiast, I began wondering if I could render such images myself. By the time, however, I wasn't skilled enough in general relativity to grasp the theoretical side. I then noticed there was going to be a general relativity course held at my university next year. I decided to wait until that.
 
 The course began and the patient waiting paid off. Soon enough I noticed the simplicity of the core ideas like geodesics, which were necessary to do this kind of a simulation. I immediately began coding the raytracer, and here I am, three weeks later, writing an article about the finished code: [Blackstar](https://github.com/flannelhead/blackstar).
 
