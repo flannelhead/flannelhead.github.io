@@ -102,7 +102,7 @@ First of all, we set $r_s = 1$. This is merely a scaling of length. Second, it i
 $$ \mathrm{d}s^2 = -\left(1 - \frac{1}{r}\right)\mathrm{d}t^2
 + \left(1 - \frac{1}{r}\right)^{-1}\mathrm{d}r^2
 + r^2  \, \mathrm{d}\phi^2.$$
-Much simpler, isn't it? From the symmetry of the Schwarzschild photons it follows that the geodesics will always be situated on some plane, i.e. they are orbits. Thus, we haven't lost any generality here.
+Much simpler, isn't it? From the symmetry of the Schwarzschild metric it follows that the geodesics will always be situated on some plane, i.e. they are orbits. Thus, we haven't lost any generality here.
 
 Let us then try our luck with the geodesic (Euler-Lagrange) equations $\eqref{eq:ele}$. The Lagrangian is
 $$ L = -\left(1 - \frac{1}{r}\right)\dot{t}^2
