@@ -7,6 +7,13 @@ body {
     background-color: #fffcf2;
 }
 
+code {
+    font-family: "PT Mono", sans-serif;
+    background-color: #dcdcdc;
+    border-radius: 3px;
+    padding: 2px 6px;
+}
+
 body, h1#logo a, #navigation a {
     color: #002b36;
 }
