@@ -115,7 +115,7 @@ $$ \frac{\partial L}{\partial t} - \frac{\mathrm{d}}{\mathrm{d}\lambda}
 \left[\left(1 - \frac{1}{r}\right)\dot{t}\right] = 0.$$
 This tells us that there is a quantity whose derivative vanishes, in other words it remains constant with respect to the curve parameter $\lambda$. Quantities like this are called *constants of motion*. We can call it $k$:
 $$ k \equiv \left(1 - \frac{1}{r}\right)\dot{t}. $$
-We got this result because the Lagrangian didn't explicitly depend on time. Thus, this constant of motion corresponds to the invariance of the Lagrangian in translations of time. Based on our prior knowledge on classical dynamics (and [Noether's theorem](https://en.wikipedia.org/wiki/Noether's_theorem), we may conclude that this constant $k$ must be somehow related to the energy.
+We got this result because the Lagrangian didn't explicitly depend on time. Thus, this constant of motion corresponds to the invariance of the Lagrangian in translations of time. Based on our prior knowledge on classical dynamics (and [Noether's theorem](https://en.wikipedia.org/wiki/Noether's_theorem)), we may conclude that this constant $k$ must be somehow related to the energy.
 
 Could we dig up another constant of motion? There seems to be an explicit dependency on $r$ in the Lagrangian. On the other hand, $\phi$ doesn't appear there at all. The ELE for $\phi$ is
 $$ \frac{\partial L}{\partial \phi} - \frac{\mathrm{d}}{\mathrm{d}\lambda}
