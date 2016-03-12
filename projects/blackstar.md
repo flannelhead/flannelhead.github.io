@@ -28,7 +28,7 @@ After the theoretical work, the ray tracing boils down to just solving the three
 $$
 \ddot{\mathbf{r}} = -\frac{3}{2} h^2 \frac{\hat{\mathbf{r}}}{r^4}
 $$
-with [fourth order Runge-Kutta](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods#The_Runge.E2.80.93Kutta_method). Here $\mathbf{r}$ is the three-dimensional Cartesian position vector, $r$ its norm and $h$ the "angular momentum" of the test particle. The details have been covered in [my article](/posts/2016-03-06-photons-and-black-holes.html).
+with [fourth order Runge-Kutta](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods#The_Runge.E2.80.93Kutta_method). Here $\mathbf{r}$ is the three-dimensional Cartesian position vector, $r$ its norm, $\ddot{\mathbf{r}}$ the acceleration and $h$ the "angular momentum" of the test particle. The details have been covered in [my article](/posts/2016-03-06-photons-and-black-holes.html).
 
 ![In this picture, the distortion ring around the black hole can be seen pretty well.](/images/lensing-disk-bloomed-800.png)
 
