@@ -9,9 +9,11 @@ When I saw [Interstellar](http://www.imdb.com/title/tt0816692/) in 2014, I was e
 
 Then, a few months later, [rantonels](http://rantonels.github.io/)' [excellent article](http://rantonels.github.io/starless/) and [Python code](https://github.com/rantonels/starless) appeared on [Hacker News](https://news.ycombinator.com/). He was rendering a Schwarzschild black hole by means of ray tracing, making clever use of NumPy for fast calculations. You should definitely check out the article and the code &mdash; they're awesome and you'll most likely learn a lot!
 
-As a numerical physics enthusiast, I began wondering if I could render such images myself. By the time, however, I wasn't skilled enough in general relativity to grasp the theoretical side. I then noticed there was going to be a general relativity course held at my university next year. I decided to wait until that.
+As a numerical physics enthusiast, I began wondering if I could render such images myself. By the time, however, I wasn't skilled enough in general relativity to grasp the theoretical side. I then noticed there was going to be a general relativity course held at the university next year. I decided to wait until that.
 
 The course began and the patient waiting paid off. Soon enough I noticed the simplicity of the core ideas like geodesics, which were necessary to do this kind of a simulation. I immediately began coding the ray tracer, and here I am, three weeks later, writing an article about the finished code: [Blackstar](https://github.com/flannelhead/blackstar).
+
+![One of the first scenes that were rendered with Blackstar.](/images/default-hires-bloomed-800.png)
 
 As an acknowledgement I'd like to note that my code owes its existence to [rantonels](http://rantonels.github.io/)' work. You'll most likely notice some evident similarities between his code and my project. However, there are some differences, and I think Blackstar ended up as a project in its own right. I decided to implement the whole thing in Haskell, given that I had just studied two courses of it. This project turned out to be a great way to learn more about Haskell.
 
@@ -28,13 +30,17 @@ $$
 $$
 with [fourth order Runge-Kutta](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods#The_Runge.E2.80.93Kutta_method). Here $\mathbf{r}$ is the three-dimensional Cartesian position vector, $r$ its norm and $h$ the "angular momentum" of the test particle. The details have been covered in [my article](/posts/2016-03-06-photons-and-black-holes.html).
 
+![In this picture, the distortion ring around the black hole can be seen pretty well.](/images/lensing-disk-bloomed-800.png)
+
 ### The accretion disk
 Unlike the geodesics, there isn't much physics to the accretion disk. Its main function is to provide some Interstellar-esque eye candy. It is modeled as an [annulus](https://en.wikipedia.org/wiki/Annulus_%28mathematics%29) with zero thickness. The light emitted by the disk is monochromatic, chosen by some HSV value. The opacity $\alpha$ is taken from a "density function". I tried out a couple of possible density profiles, ending up with one expressed in terms of the radius $r$:
 $$
-\alpha(r) = \sin^2 \left(
-\frac{\pi(R_\text{outer} - r)}{R_\text{outer} - R_\text{inner}} \right),
+\alpha(r) = \sin \left[ \pi \left(
+\frac{R_\text{outer} - r}{R_\text{outer} - R_\text{inner}} \right)^2 \right],
 $$
 where $R_\text{inner}$ is the inner radius of the disk and $R_\text{outer}$ the outer one. This gave the disk a nice plasma-like look and was my fair share of artistic license.
+
+![A closer look at the accretion disk.](/images/closeup-bloomed-800.png)
 
 ### Haskell appreciation
 During the project, I had to code a good variety of actions from config file parsing and data structure serialization to quick, parallel computations. I was delighted to realize there's a good selection of high quality packages available for pretty much every action I wanted to implement. In addition, almost all of them were pretty well documented. I've listed some particular cases below.
@@ -56,6 +62,8 @@ When some "sight ray" in the ray tracing travels far enough from the black hole,
 I decided to make use of some [star catalog data](http://tdc-www.harvard.edu/catalogs/index.html). In these star catalogs, the positions of the stars are listed along with their [apparent magnitudes](https://en.wikipedia.org/wiki/Apparent_magnitude) and [spectral types](https://en.wikipedia.org/wiki/Stellar_classification#Spectral_types) &mdash; just enough to create a visual representation of the celestial sphere.
 
 Sampling stars from a list of several hundred thousand stars is obviously not going to be fast. To tackle this, I first converted the position data (two angles parametrizing the celestial sphere) to three-dimensional unit vectors. This makes it easy to compare them with the direction vectors of the rays leaving to infinity. Second, I decided to order the stars into a k-dimensional tree for faster lookups. There are several *k-d* tree implementations available on Hackage. I settled for [kdt](https://hackage.haskell.org/package/kdt), which looked simple, flexible and stable.
+
+![A wide angle shot of the star field.](/images/wideangle1-bloomed-800.png)
 
 The construction of the *k-d* tree of $n$ stars is approximately a $\mathcal{O}(n \log n)$ operation, and in practice it took about half a minute on my computer. It's a one time thing, so I didn't definitely want to do it every time the program was run. I decided to use [cereal](https://hackage.haskell.org/package/kdt) to serialize the tree and save it to a file in binary form. The datypes in kdt didn't directly lend themselves to serialization: I had to [fork](https://github.com/flannelhead/kdt) kdt and expose some of the datatypes in order to derive the `Serialize` typeclass for them. However, this wasn't a very big deal. Stack made it very easy to use the fork instead of the official package in LTS Haskell. If you know how to work around this without modifying the package, please contact me!
 
