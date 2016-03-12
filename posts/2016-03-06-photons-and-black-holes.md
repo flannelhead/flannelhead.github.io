@@ -19,7 +19,7 @@ In a three-dimensional *flat* (i.e. not curved) space, the Pythagorean theorem t
 $$
 \label{eq:minkowski}
 \mathrm{d}s^2 = -\mathrm{d}t^2 + \mathrm{d}x^2 + \mathrm{d}y^2 + \mathrm{d}z^2.$$
-This is the flat spacetime metric that is used in special relativity. The negative sign of the $\mathrm{d}t^2$ term tells us that the time component gives a *negative* contribution to the spacetime distance. Thus, the time coordinate must have a special role in relativity.
+This is the flat spacetime metric that is used in special relativity. The negative sign of the $\mathrm{d}t^2$ term tells us that the time component gives a *negative* contribution to the spacetime distance. Thus, the time coordinate must have a special role in relativity. (Here we follow the −+++ convention. Some authors use the +−−− convention, which doesn't change the overall story, but will flip a few signs here and there in the math.)
 
 Consider a particle moving along the $x$-axis at a constant velocity $v$. In other words, we have
 $$v \equiv \frac{\mathrm{d}x}{\mathrm{d}t} \implies \mathrm{d}x = v\,\mathrm{d}t$$
