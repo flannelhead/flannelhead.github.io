@@ -76,7 +76,7 @@ $$
 The ELE for the $t$ component then becomes
 $$ \frac{\partial L}{\partial t} - \frac{\mathrm{d}}{\mathrm{d}\lambda}
 \frac{\partial L}{\partial \dot{t}}
-= 0 - \frac{\mathrm{d}}{\mathrm{d}\lambda}(2\dot{t})
+= 0 - \frac{\mathrm{d}}{\mathrm{d}\lambda}(-2\dot{t})
 = -2 \ddot{t}
 = 0 \iff \ddot{t} = 0,$$
 where $\ddot{t} \equiv \frac{\mathrm{d}^2 t}{\mathrm{d}\lambda^2}$.
