@@ -13,7 +13,7 @@ As a numerical physics enthusiast, I began wondering if I could render such imag
 
 The course began and the patient waiting paid off. Soon enough I noticed the simplicity of the core ideas like geodesics, which were necessary to do this kind of a simulation. I immediately began coding the ray tracer, and here I am, three weeks later, writing an article about the finished code: [Blackstar](https://github.com/flannelhead/blackstar). Later on, the project was discussed on [r/haskell](https://www.reddit.com/r/haskell/comments/4a39b4/rendering_black_holes_with_haskell/) and [Hacker News](https://news.ycombinator.com/item?id=11271772).
 
-![One of the first scenes that were rendered with Blackstar.](/images/default-hires-bloomed-800.png)
+![One of the first scenes that were rendered with Blackstar. [Larger image](/images/default-hires-bloomed.png)](/images/default-hires-bloomed-960.png)
 
 As an acknowledgement I'd like to note that my code owes its existence to [rantonels](http://rantonels.github.io/)' work. You'll most likely notice some evident similarities between these two projects. However, there are also some differences, and I think Blackstar ended up as a project in its own right. For one, I decided to implement the whole thing in Haskell, given that I had just studied two courses of it. This project turned out to be a great way to learn more about Haskell.
 
@@ -30,7 +30,7 @@ $$
 $$
 with [fourth order Runge-Kutta](https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods#The_Runge.E2.80.93Kutta_method). Here $\mathbf{r}$ is the three-dimensional Cartesian position vector, $r$ its norm, $\ddot{\mathbf{r}}$ the acceleration and $h$ the "angular momentum" of the test particle. The details have been covered in [my article](/posts/2016-03-06-photons-and-black-holes.html).
 
-![In this picture, the distortion ring around the black hole can be seen pretty well.](/images/lensing-disk-bloomed-800.png)
+![In this picture, the distortion ring around the black hole can be seen particularly well. [Larger image](/images/lensing-disk-bloomed.png)](/images/lensing-disk-bloomed-960.png)
 
 ### The accretion disk
 Unlike the geodesics, there isn't much physics to the accretion disk. Its main function is to provide some Interstellar-esque eye candy. It is modeled as an [annulus](https://en.wikipedia.org/wiki/Annulus_%28mathematics%29) with zero thickness. The light emitted by the disk is monochromatic, chosen by some HSV value. The opacity $\alpha$ is taken from a "density function". I tried out a couple of possible density profiles, ending up with one expressed in terms of the radius $r$:
@@ -40,7 +40,7 @@ $$
 $$
 where $R_\text{inner}$ is the inner radius of the disk and $R_\text{outer}$ the outer one. This gave the disk a nice plasma-like look and was my fair share of artistic license.
 
-![A closer look at the accretion disk.](/images/closeup-bloomed-800.png)
+![A closer look at the accretion disk. [Larger image](/images/closeup-hires-bloomed.png)](/images/closeup-hires-bloomed-960.png)
 
 ### Haskell appreciation
 During the project, I had to code a good variety of actions from config file parsing and data structure serialization to quick, parallel computations. I was delighted to realize there's a good selection of high quality packages available for pretty much every action I wanted to implement. In addition, almost all of them were pretty well documented. I've listed some particular cases below.
@@ -63,9 +63,11 @@ I decided to make use of some [star catalog data](http://tdc-www.harvard.edu/cat
 
 Sampling stars from a list of several hundred thousand stars is obviously not going to be fast. To tackle this, I first converted the position data (two angles parametrizing the celestial sphere) to three-dimensional unit vectors. This makes it easy to compare them with the direction vectors of the rays leaving to infinity. Second, I decided to order the stars into a k-dimensional tree for faster lookups. There are several *k-d* tree implementations available on Hackage. I settled for [kdt](https://hackage.haskell.org/package/kdt), which looked simple, flexible and stable.
 
-![A wide angle shot of the star field.](/images/wideangle1-bloomed-800.png)
+![A wide angle shot of the star field. [Larger image](/images/wideangle1-bloomed.png)](/images/wideangle1-bloomed-960.png)
 
 The construction of the *k-d* tree of $n$ stars is approximately a $\mathcal{O}(n \log n)$ operation, and in practice it took about half a minute on my computer. It's a one time thing, so I didn't definitely want to do it every time the program was run. I decided to use [cereal](https://hackage.haskell.org/package/kdt) to serialize the tree and save it to a file in binary form. The datypes in kdt didn't directly lend themselves to serialization: I had to [fork](https://github.com/flannelhead/kdt) kdt and expose some of the datatypes in order to derive the `Serialize` typeclass for them. However, this wasn't a very big deal. Stack made it very easy to use the fork instead of the official package in LTS Haskell. If you know how to work around this without modifying the package, please contact me!
+
+*EDIT*: The maintainer of `kdt` kindly upgraded the upstream package to make the necessary types visible. The fork is not required any more.
 
 ### Experiment: automatic differentiation
 When starting this project, I had a pretty ambitious idea in my mind. The most general way to do ray tracing in Riemannian geometry is to let the user supply the spacetime metric to be used. From there, one can compute the [Christoffel symbols](https://en.wikipedia.org/wiki/Christoffel_symbols#Christoffel_symbols_of_the_second_kind_.28symmetric_definition.29) and express the geodesic equations in terms of them. Computing the Christoffel symbols involves differentiation of the metric components. Depending on the complexity of the metric, these expressions can get quite cumbersome and at least very tedious to type in.
