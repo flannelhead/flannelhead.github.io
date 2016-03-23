@@ -11,7 +11,7 @@ Then, a few months later, [rantonels](http://rantonels.github.io/)' [excellent a
 
 As a numerical physics enthusiast, I began wondering if I could render such images myself. By the time, however, I wasn't skilled enough in general relativity to grasp the theoretical side. I then noticed there was going to be a general relativity course held at the university next year. I decided to wait until that.
 
-The course began and the patient waiting paid off. Soon enough I noticed the simplicity of the core ideas like geodesics, which were necessary to do this kind of a simulation. I immediately began coding the ray tracer, and here I am, three weeks later, writing an article about the finished code: [Blackstar](https://github.com/flannelhead/blackstar).
+The course began and the patient waiting paid off. Soon enough I noticed the simplicity of the core ideas like geodesics, which were necessary to do this kind of a simulation. I immediately began coding the ray tracer, and here I am, three weeks later, writing an article about the finished code: [Blackstar](https://github.com/flannelhead/blackstar). Later on, the project was discussed on [r/haskell](https://www.reddit.com/r/haskell/comments/4a39b4/rendering_black_holes_with_haskell/) and [Hacker News](https://news.ycombinator.com/item?id=11271772).
 
 ![One of the first scenes that were rendered with Blackstar.](/images/default-hires-bloomed-800.png)
 
@@ -75,6 +75,8 @@ I began wondering if I could work around the problem by employing [automatic dif
 However, nothing comes for free. In a computationally expensive application like this, it quickly became obvious that the automatic differentiation had quite an impact on the execution time. In my early tests, I saw a difference of two orders of magnitude between the explicit Schwarzschild geodesic equations and the ones obtained by AD. You can find the AD work in [a branch of my repo](https://github.com/flannelhead/blackstar/tree/ad).
 
 ad is still an amazing package, and I intend to use it in the future for some computationally less intensive applications. In a highly intensive task like this, one just has to squeeze out every possible bit of speed.
+
+*EDIT*: Edward Kmett, the creator of the `ad` package [noted on reddit](https://www.reddit.com/r/haskell/comments/4a39b4/rendering_black_holes_with_haskell/d0x1w2f) that a better approach would be to compile the expressions derived by `ad` into machine code. I'm very interested in this idea and intend to try it in the future. It might take some time, though.
 
 ### Optimization (help wanted!)
 Speaking of speed, this project was really the first number crunching project I have done in Haskell. Other than the [optimization tips](http://hackage.haskell.org/package/repa-3.4.0.2/docs/Data-Array-Repa.html) given for Repa, I didn't do much in order to optimize the code. It seems to be reasonably speedy, though.
