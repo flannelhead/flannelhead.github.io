@@ -55,8 +55,8 @@ $$ S = \int \mathrm{d}s
     \frac{\mathrm{d}s}{\mathrm{d}\lambda}
     \right)^2}\,\mathrm{d}\lambda. $$
 From here we identify that this action corresponds to the Lagrangian
-$$ L \equiv \left(\frac{\mathrm{d}s}{\mathrm{d}\lambda}\right)^2, $$
-and the curves of extremal length will be solutions of the Euler&ndash;Lagrange equations (*ELE*, one for each coordinate $x^\mu$, where $\mu = 0, 1, 2, 3$):
+$$ L \equiv \left(\frac{\mathrm{d}s}{\mathrm{d}\lambda}\right)^2. $$ N.B. the actual Lagrangian would be the square root of this one! However, the square version [yields the same equations](http://physics.stackexchange.com/questions/149082/geodesic-equation-from-variation-is-the-squared-lagrangian-equivalent) and hence it is used for convenience.
+The curves of extremal length will then be solutions of the Euler&ndash;Lagrange equations (*ELE*, one for each coordinate $x^\mu$, where $\mu = 0, 1, 2, 3$):
 $$
 \label{eq:ele}
 \frac{\partial L}{\partial x^\mu} - \frac{\mathrm{d}}{\mathrm{d}\lambda}
