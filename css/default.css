@@ -51,6 +51,12 @@ a:hover, #logo a:hover, #navigation a:hover {
     margin-right: 8px;
 }
 
+#footer {
+    font-size: 12px;
+    text-align: center;
+    padding: 18px 0;
+}
+
 .normalweight {
     font-weight: normal;
 }
