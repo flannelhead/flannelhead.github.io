@@ -55,7 +55,7 @@ a:hover, #logo a:hover, #navigation a:hover {
     font-size: 12px;
     text-align: center;
     padding: 18px 0;
-    width: 400px;
+    max-width: 400px;
     margin: 0 auto;
 }
 
