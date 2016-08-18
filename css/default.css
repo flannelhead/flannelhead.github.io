@@ -75,3 +75,10 @@ p.caption {
 .figure > img {
     max-width: 100%;
 }
+
+@media screen and (max-width: 800px) {
+    .math.display > .mjx-chtml {
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+}
