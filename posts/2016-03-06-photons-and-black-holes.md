@@ -1,5 +1,6 @@
 ---
 title: Photons and black holes
+math:
 ---
 
 In this post, I'll attempt to provide a very tiny introduction to [general relativity (GR)](https://en.wikipedia.org/wiki/General_relativity) (actually a very specific part of it) and describe the motion of a photon in the vicinity of a black hole. The goal is to get a grasp of the [gravitational lensing effect](https://en.wikipedia.org/wiki/Gravitational_lens#Explanation_in_terms_of_space.E2.80.93time_curvature) and finally derive the equations of motion for the photon. The motivation for this is the possibility to use the simple result to efficiently do raytracing in the spacetime surrounding a black hole.
