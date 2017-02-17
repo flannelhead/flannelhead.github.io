@@ -1,7 +1,7 @@
 ---
 title: Blackstar
 synopsis: Raytracing black holes with Haskell
-math:
+math: true
 ---
 
 General relativity is cool. Some of the ideas introduced there are conceptually so simple and beautiful that I can't help but appreciate Einstein's work.
