@@ -15,7 +15,11 @@ Web applications implemented with HTML and JavaScript are becoming more and more
 
 The ESP8266 can be configured as a WiFi access point. One can set up a HTTP server serving static pages, making the ESP8266 able to serve web apps. Now imagine if the robot control software was implemented as a web application! That is the key idea behind my project ESPway.
 
-(insert video here)
+<video controls>
+<source src="/images/espway.webm" type="video/webm">
+<source src="/images/espway.mp4" type="video/mp4">
+<p>Your browser doesn't support HTML5 video. <a href="https://www.youtube.com/watch?v=R8pQ2Tb4RAg">Watch this video on YouTube.</a></p>
+</video>
 
 The code and schematics for this little robot can be found [on GitHub](https://github.com/flannelhead/espway). There are preliminary instructions on building, developing and using the software. I'm also building some kind of a user manual there. The project was also [discussed on Reddit](https://www.reddit.com/r/esp8266/comments/5pqri1/espway_a_selfbalancing_robot_powered_by_esp8266) a while ago when I posted the video.
 
@@ -41,7 +45,7 @@ Finally, two WS2812B NeoPixels are added as the "eyes" of the robot. They have p
 
 There's not much to say about the mechanics, other that that optimization of size and weight were set as design goals. The prototype body was built out of some pieces of 4mm plywood and glued together with epoxy.
 
-(picture here)
+![A general view of the robot](/images/espway-portrait.jpg)
 
 ### Software platform
 Nowadays there is a wealth of resources and support for developing software on the ESP8266. There are two SDKs offered by the manufacturer Espressif, one with a RTOS and the other one with no operating system. There is also an [Arduino core](https://github.com/esp8266/arduino), the [Simba](http://simba-os.readthedocs.io/en/latest/) cross-platform RTOS framework and [MicroPython](http://micropython.org/). New languages and frameworks seem to pop out every now and then, which is great!
@@ -52,15 +56,15 @@ However, for maximum flexibility and control, I switched to the manufacturer's "
 
 ### Mobile web UI
 
-(steering picture)
-
 After powering on the robot and connecting a client device to the WiFi access point, one can open the user interface with a web browser at the default IP address `192.168.4.1`.
 
 I tried to keep the UI as simple as possible. It essentially consists of a virtual "joystick" drawn on a HTML5 canvas. On a touch device such as a mobile phone, it feels quite intuitive.
 
+![The user interface used for steering.](/images/espway-steering.png)
+
 There is also a UI for on-line tuning of the robot's PID parameters at the url `/pid`. It is a work in progress, but it's already in a semi-usable state. It essentially allows tuning the robot in one pass without re-flashing the firmware every time the parameters are changed. One can save the tuned parameters to the flash memory via the UI.
 
-(PID picture)
+![The initial PID tuning user interface.](/images/espway-pid-tuning.png)
 
 ### Low latency communications via a WebSocket
 Probably the most interesting part of this project is the method of achieving low latency remote control.
@@ -96,9 +100,13 @@ This naturally leads to a control strategy that is often implemented in self-bal
 
 Naturally, the second controller gets feedback via the MPU6050 inertial measurement unit. On the other hand, getting feedback of the current velocity is not a trivial task. One could achieve that by installing rotation encoders on the motor shafts. In order to minimize the cost and simplify the circuitry, I left that out. Instead, there's a crude approximation used in my code: the velocity feedback is taken from the motor drive signal which is smoothed in order to cancel short-term variations. This actually works surprisingly well!
 
-In addition, a simple form of [gain scheduling](https://en.wikipedia.org/wiki/Gain_scheduling) is used in situations where the robot is about to fall. A different set of PID coefficients with higher proportional gain is loaded in order to reach stability again. You can see this in action in the video below.
+In addition, a simple form of [gain scheduling](https://en.wikipedia.org/wiki/Gain_scheduling) is used in situations where the robot is about to fall. A different set of PID coefficients with higher proportional gain is loaded in order to reach stability again. You can see this in action (along with some fallovers ;) in the video below.
 
-(video here)
+<video controls>
+<source src="/images/espway2.webm" type="video/webm">
+<source src="/images/espway2.mp4" type="video/mp4">
+<p>Your browser doesn't support HTML5 video. <a href="https://www.youtube.com/watch?v=R8pQ2Tb4RAg">Watch this video on YouTube.</a></p>
+</video>
 
 The control scheme described here is not the only way to implement self-balancing robots. See [this article](http://staff.elka.pw.edu.pl/~pwawrzyn/pub-s/1502_2wrobot.pdf) for comparison with a control scheme based on a dynamic model of the robot.
 
@@ -107,7 +115,7 @@ Last but not least, let's discuss some practicalities of programming the ESP8266
 
 One problem with this microcontroller is the lack of hardware peripherals. In particular, there are no hardware implementations of I2C or PWM on the chip. They have to be implemented in software. The problem is that the very same processor core has constantly handle the WiFi communication. So, any other software routine might get interrupted by the WiFi interrupts. That's a bit of a problem since both I2C and PWM are critical about timing.
 
-Software implementations of PWM and I2C are bundled with the Espressif SDK. However, as of writing, they are flawed in some way or just inefficient. Luckily, some smart people in the community have rolled their own drivers. I ended up using [`ESP8266_new_pwm`](https://github.com/StefanBruens/ESP8266_new_pwm) by Stefan Bruens, which uses NMI interrupts to realize a stable PWM signal with correct timing.
+Software implementations of PWM and I2C are bundled with the Espressif SDK. However, as of writing, they are flawed in some way or just inefficient. Luckily, some smart people in the community have rolled their own drivers. I ended up using [`ESP8266_new_pwm`](https://github.com/StefanBruens/ESP8266_new_pwm) by Stefan Bruens, which uses NMI interrupts to realize a stable PWM signal with correct timing. The motors are fed with 2 kHz PWM.
 
 For I2C, a fast assembly implementation called [`brzo_i2c`](https://github.com/pasko-zh/brzo_i2c) by Pascal Kurtansky was used. I had some problems with the I2C driver at first since it completely disabled interrupts during I2C transactions. That eventually led to the firmware crashing, probably due to some WiFi interrupt not being able to fire. That was easily fixed by commenting out the instruction that disabled the interrupts. That compromises the I2C timing, but in practice everything has been working very well.
 

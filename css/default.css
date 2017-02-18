@@ -76,6 +76,10 @@ p.caption {
     max-width: 100%;
 }
 
+video {
+    max-width: 100%;
+}
+
 @media screen and (max-width: 800px) {
     .math.display > .mjx-chtml {
         overflow-y: hidden;
