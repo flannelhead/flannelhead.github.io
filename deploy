@@ -12,6 +12,7 @@ stack exec flannelheads-lab build
 
 # Get previous files
 git fetch --all
+git branch -D master
 git checkout -b master --track origin/master
 
 # Overwrite existing files with new files
@@ -32,6 +33,5 @@ git push origin master:master
 
 # Restoration
 git checkout src
-git branch -D master
 git stash pop
 
