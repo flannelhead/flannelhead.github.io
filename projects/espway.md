@@ -3,7 +3,7 @@ title: ESPway
 synopsis: A Segway-style WiFi controlled robot built on ESP8266
 ---
 
-Ever since I started tinkering with Arduino and embedded systems, I've been pretty excited about building a self-balancing, Segway-like robot. There's a wealth of similar projects and resources around the internet.
+Ever since I started tinkering with Arduino and embedded systems, I've been pretty excited about building a self-balancing, Segway-like robot. There's a wealth of similar projects and resources around the Internet.
 
 The [first prototype](http://sakarik.kapsi.fi/balancer/) was built inside a plastic lunch box. It used an Arduino Nano and infrared remote control. It used the [MPU6050](https://www.invensense.com/products/motion-tracking/6-axis/mpu-6050/) inertial measurement unit for detecting the orientation of the robot. The balancing worked very well, but the infrared remote control was quite impractical and unreliable.
 
@@ -39,7 +39,7 @@ The motors are plain old DC motors with an integrated metal gearbox. The nominal
 
 The motors are driven by the [L293D](http://www.ti.com/lit/ds/symlink/l293d.pdf) dual H-bridge motor driver IC. This IC was chosen mostly because that's what I had at hand when building the robot. Now I've learned that the bipolar transistor outputs produce a significant voltage drop across the bridge. Eventually I'll replace the driver with a [DRV8833](http://www.ti.com/lit/ds/symlink/drv8833.pdf) which has MOSFET outputs.
 
-I'm using a 2-cell LiPo battery for powering the robot. It gives ~8.4 volts when fully charged. The battery voltage is monitored via the analog input of the ESP8266, and there's an optional feature to cut off the motors when the battery voltage falls under a certain threshold. That's common practise used with LiPo batteries. The analog input range is 0-1 volts. On the D1 mini board, there already is a voltage divider with a ratio of 1:3.3. Hence I only had to add one resistor to modify the ratio to 1:10, which scales the battery voltage to fit the analog input range.
+I'm using a 2-cell LiPo battery for powering the robot. It gives ~8.4 volts when fully charged. The battery voltage is monitored via the analog input of the ESP8266, and there's an optional feature to cut off the motors when the battery voltage falls under a certain threshold. That's common practice used with LiPo batteries. The analog input range is 0-1 volts. On the D1 mini board, there already is a voltage divider with a ratio of 1:3.3. Hence I only had to add one resistor to modify the ratio to 1:10, which scales the battery voltage to fit the analog input range.
 
 Finally, two WS2812B NeoPixels are added as the "eyes" of the robot. They have proven quite useful for reporting the current state of the robot (if it has fallen, if there's OTA update in progress etc.)
 
