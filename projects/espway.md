@@ -105,7 +105,7 @@ In addition, a simple form of [gain scheduling](https://en.wikipedia.org/wiki/Ga
 <video controls>
 <source src="/images/espway2.webm" type="video/webm">
 <source src="/images/espway2.mp4" type="video/mp4">
-<p>Your browser doesn't support HTML5 video. <a href="https://www.youtube.com/watch?v=R8pQ2Tb4RAg">Watch this video on YouTube.</a></p>
+<p>Your browser doesn't support HTML5 video. <a href="https://www.youtube.com/watch?v=qkeA9Qc5bp0">Watch this video on YouTube.</a></p>
 </video>
 
 The control scheme described here is not the only way to implement self-balancing robots. See [this article](http://staff.elka.pw.edu.pl/~pwawrzyn/pub-s/1502_2wrobot.pdf) for comparison with a control scheme based on a dynamic model of the robot.
