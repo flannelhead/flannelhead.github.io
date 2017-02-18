@@ -1,0 +1,7 @@
+#!/bin/sh
+
+rm -r "$(dirname "$0")/_cache"
+cd "$(dirname "$0")/_site"
+git add .
+git rm -rf *
+

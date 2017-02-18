@@ -1,52 +1,17 @@
-<!DOCTYPE html>
+---
+title: Welcome
+---
 
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-        <title>flannelhead's lab - Welcome</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic,700|Source+Code+Pro" rel="stylesheet" type="text/css" />
-
-        <link rel="stylesheet" type="text/css" href="./css/default.css" />
-    </head>
-    <body>
-        <h1 id="logo">
-            <a href="./">flannelhead's lab</a>
-        </h1>
-
-        <div id="navigation">
-            <a href="./">Home</a>
-            <a href="./projects.html">Projects</a>
-            <a href="./about.html">About</a>
-        </div>
-
-        <div id="content">
-            <p>Welcome to my personal website and blog!</p>
+<p>Welcome to my personal website and blog!</p>
 
 <p>The blog posts are listed here on the front page. For project pages, please
-have a look at the <a href="./projects.html">Projects</a> section.
+have a look at the <a href="/projects.html">Projects</a> section.
 
 <h2>Posts</h2>
 <ul>
-    
+    $for(posts)$
         <li>
-            <a href="./posts/2016-03-06-photons-and-black-holes.html">Photons and black holes</a> - March  6, 2016
+            <a href="$url$">$title$</a> - $date$
         </li>
-    
-        <li>
-            <a href="./posts/2016-03-05-getting-to-know-hakyll.html">Getting to know Hakyll</a> - March  5, 2016
-        </li>
-    
+    $endfor$
 </ul>
-
-        </div>
-
-        <div id="footer">
-            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a><br />Except where otherwise noted, the content is licensed under a<br /><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br />
-            &copy; 2016 Sakari Kapanen
-        </div>
-        
-    </body>
-</html>

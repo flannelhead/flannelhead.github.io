@@ -1,0 +1,8 @@
+#!/bin/sh
+
+bin_name="flannelheads-lab"
+
+# Ensure the generator itself is up-to-date
+stack build
+stack exec "$bin_name" $@
+
