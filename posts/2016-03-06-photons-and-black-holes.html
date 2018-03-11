@@ -31,10 +31,9 @@
 </div>
 
 <p>In this post, I’ll attempt to provide a very tiny introduction to <a href="https://en.wikipedia.org/wiki/General_relativity">general relativity (GR)</a> (actually a very specific part of it) and describe the motion of a photon in the vicinity of a black hole. The goal is to get a grasp of the <a href="https://en.wikipedia.org/wiki/Gravitational_lens#Explanation_in_terms_of_space.E2.80.93time_curvature">gravitational lensing effect</a> and finally derive the equations of motion for the photon. The motivation for this is the possibility to use the simple result to efficiently do raytracing in the spacetime surrounding a black hole.</p>
-<div class="figure">
-<img src="../images/lensing-960.png" alt="A raytraced image of the spacetime surrounding a black hole. Some interesting distortion effects can be seen here." />
-<p class="caption">A raytraced image of the spacetime surrounding a black hole. Some interesting distortion effects can be seen here.</p>
-</div>
+<figure>
+<img src="../images/lensing-960.png" alt="A raytraced image of the spacetime surrounding a black hole. Some interesting distortion effects can be seen here." /><figcaption>A raytraced image of the spacetime surrounding a black hole. Some interesting distortion effects can be seen here.</figcaption>
+</figure>
 <p>Familiarity with basic differential calculus, vector analysis and Lagrangian mechanics is assumed. Knowledge of <a href="https://en.wikipedia.org/wiki/Riemannian_geometry">Riemannian geometry</a> would really be also necessary for rigorous mathematical analysis of the subject matter. However, this is outside the scope of this post. Instead, I’m trying to scrape the surface just enough to give an intuitive picture of what’s happening. For a serious discussion of general relativity, you could consult <a href="http://arxiv.org/abs/gr-qc/9712019">Sean Carroll’s lecture notes</a>, for example. If you are already familiar with GR and/or Riemannian geometry, you may well skip to the very last section for the derivation of the equations of motion. To be fair, though, the proof is pretty standard textbook stuff (found in e.g. Carroll’s notes). The reason it is presented here is that one actually doesn’t have to consume one textbook’s worth of <a href="https://en.wikipedia.org/wiki/Einstein_notation"><em>g-mu-nu</em></a> to be able to intuitively understand the basic concepts and follow the derivation.</p>
 <p><strong>DISCLAIMER</strong>: I’m still at the beginning of my journey in GR, so you might find some factual inaccuracies and hand-waving. If you feel something should be fixed, please report it at my site’s <a href="https://github.com/flannelhead/flannelhead.github.io/issues">issue tracker</a>.</p>
 <h3 id="four-vectors-and-spacetime-curves">Four-vectors and spacetime curves</h3>
@@ -120,7 +119,7 @@ V(r) = \frac{h^2}{2r^2} - \frac{h^2}{2r^3}.
 
         <div id="footer">
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" /></a><br />Except where otherwise noted, the content is licensed under a<br /><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br />
-            &copy; 2017 Sakari Kapanen
+            &copy; 2018 Sakari Kapanen
         </div>
         
         <script type="text/x-mathjax-config">

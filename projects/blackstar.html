@@ -30,10 +30,9 @@
 <p>Then, a few months later, <a href="http://rantonels.github.io/">rantonels</a>’ <a href="http://rantonels.github.io/starless/">excellent article</a> and <a href="https://github.com/rantonels/starless">Python code</a> appeared on <a href="https://news.ycombinator.com/">Hacker News</a>. He was rendering a Schwarzschild black hole by means of ray tracing, making clever use of NumPy for fast calculations. You should definitely check out the article and the code — they’re awesome and you’ll most likely learn a lot!</p>
 <p>As a numerical physics enthusiast, I began wondering if I could render such images myself. By the time, however, I wasn’t skilled enough in general relativity to grasp the theoretical side. I then noticed there was going to be a general relativity course held at the university next year. I decided to wait until that.</p>
 <p>The course began and the patient waiting paid off. Soon enough I noticed the simplicity of the core ideas like geodesics, which were necessary to do this kind of a simulation. I immediately began coding the ray tracer, and here I am, three weeks later, writing an article about the finished code: <a href="https://github.com/flannelhead/blackstar">Blackstar</a>. Later on, the project was discussed on <a href="https://www.reddit.com/r/haskell/comments/4a39b4/rendering_black_holes_with_haskell/">r/haskell</a> and <a href="https://news.ycombinator.com/item?id=11271772">Hacker News</a>.</p>
-<div class="figure">
-<img src="../images/default-hires-bloomed-960.png" alt="One of the first scenes that were rendered with Blackstar. Larger image" />
-<p class="caption">One of the first scenes that were rendered with Blackstar. <a href="../images/default-hires-bloomed.png">Larger image</a></p>
-</div>
+<figure>
+<img src="../images/default-hires-bloomed-960.png" alt="One of the first scenes that were rendered with Blackstar. Larger image" /><figcaption>One of the first scenes that were rendered with Blackstar. <a href="../images/default-hires-bloomed.png">Larger image</a></figcaption>
+</figure>
 <p>As an acknowledgement I’d like to note that my code owes its existence to <a href="http://rantonels.github.io/">rantonels</a>’ work. You’ll most likely notice some evident similarities between these two projects. However, there are also some differences, and I think Blackstar ended up as a project in its own right. For one, I decided to implement the whole thing in Haskell, given that I had just studied two courses of it. This project turned out to be a great way to learn more about Haskell.</p>
 <h3 id="schwarzschild-geodesics">Schwarzschild geodesics</h3>
 <p>What do we need to visualize the gravitational lensing effect produced by a dense object such as a black hole? In Newtonian mechanics, massless particles like photons move in straight lines. In general relativity, the huge mass density of a black hole generates spacetime curvature. The generalization of a straight line to a curved spacetime is a <a href="https://en.wikipedia.org/wiki/Geodesic">geodesic</a> — it turns out that photons move along geodesics, which are some curved paths.</p>
@@ -42,19 +41,17 @@
 <p>After the theoretical work, the ray tracing boils down to just solving the three-dimensional Newton’s equation of motion <span class="math display">\[
 \ddot{\mathbf{r}} = -\frac{3}{2} h^2 \frac{\hat{\mathbf{r}}}{r^4}
 \]</span> with <a href="https://en.wikipedia.org/wiki/Runge%E2%80%93Kutta_methods#The_Runge.E2.80.93Kutta_method">fourth order Runge-Kutta</a>. Here <span class="math inline">\(\mathbf{r}\)</span> is the three-dimensional Cartesian position vector, <span class="math inline">\(r\)</span> its norm, <span class="math inline">\(\ddot{\mathbf{r}}\)</span> the acceleration and <span class="math inline">\(h\)</span> the “angular momentum” of the test particle. The details have been covered in <a href="../posts/2016-03-06-photons-and-black-holes.html">my article</a>.</p>
-<div class="figure">
-<img src="../images/lensing-disk-bloomed-960.png" alt="In this picture, the distortion ring around the black hole can be seen particularly well. Larger image" />
-<p class="caption">In this picture, the distortion ring around the black hole can be seen particularly well. <a href="../images/lensing-disk-bloomed.png">Larger image</a></p>
-</div>
+<figure>
+<img src="../images/lensing-disk-bloomed-960.png" alt="In this picture, the distortion ring around the black hole can be seen particularly well. Larger image" /><figcaption>In this picture, the distortion ring around the black hole can be seen particularly well. <a href="../images/lensing-disk-bloomed.png">Larger image</a></figcaption>
+</figure>
 <h3 id="the-accretion-disk">The accretion disk</h3>
 <p>Unlike the geodesics, there isn’t much physics to the accretion disk. Its main function is to provide some Interstellar-esque eye candy. It is modeled as an <a href="https://en.wikipedia.org/wiki/Annulus_%28mathematics%29">annulus</a> with zero thickness. The light emitted by the disk is monochromatic, chosen by some HSV value. The opacity <span class="math inline">\(\alpha\)</span> is taken from a “density function”. I tried out a couple of possible density profiles, ending up with one expressed in terms of the radius <span class="math inline">\(r\)</span>: <span class="math display">\[
 \alpha(r) = \sin \left[ \pi \left(
 \frac{R_\text{outer} - r}{R_\text{outer} - R_\text{inner}} \right)^2 \right],
 \]</span> where <span class="math inline">\(R_\text{inner}\)</span> is the inner radius of the disk and <span class="math inline">\(R_\text{outer}\)</span> the outer one. This gave the disk a nice plasma-like look and was my fair share of artistic license.</p>
-<div class="figure">
-<img src="../images/closeup-hires-bloomed-960.png" alt="A closer look at the accretion disk. Larger image" />
-<p class="caption">A closer look at the accretion disk. <a href="../images/closeup-hires-bloomed.png">Larger image</a></p>
-</div>
+<figure>
+<img src="../images/closeup-hires-bloomed-960.png" alt="A closer look at the accretion disk. Larger image" /><figcaption>A closer look at the accretion disk. <a href="../images/closeup-hires-bloomed.png">Larger image</a></figcaption>
+</figure>
 <h3 id="haskell-appreciation">Haskell appreciation</h3>
 <p>During the project, I had to code a good variety of actions from config file parsing and data structure serialization to quick, parallel computations. I was delighted to realize there’s a good selection of high quality packages available for pretty much every action I wanted to implement. In addition, almost all of them were pretty well documented. I’ve listed some particular cases below.</p>
 <p>The tooling has also gone a long, long way, primarily thanks to <a href="http://www.haskellstack.org">stack</a> and <a href="https://www.stackage.org/lts">LTS Haskell</a>. stack makes the installation of the toolchain and the dependencies <em>really</em> easy — I could painlessly do it even on Windows 10 (and it was fast!)</p>
@@ -67,10 +64,9 @@
 <p>When some “sight ray” in the ray tracing travels far enough from the black hole, the colour of the corresponding pixel is sampled from the celestial sphere — whether the ray came from a black part of the sky or a star.</p>
 <p>I decided to make use of some <a href="http://tdc-www.harvard.edu/catalogs/index.html">star catalog data</a>. In these star catalogs, the positions of the stars are listed along with their <a href="https://en.wikipedia.org/wiki/Apparent_magnitude">apparent magnitudes</a> and <a href="https://en.wikipedia.org/wiki/Stellar_classification#Spectral_types">spectral types</a> — just enough to create a visual representation of the celestial sphere.</p>
 <p>Sampling stars from a list of several hundred thousand stars is obviously not going to be fast. To tackle this, I first converted the position data (two angles parametrizing the celestial sphere) to three-dimensional unit vectors. This makes it easy to compare them with the direction vectors of the rays leaving to infinity. Second, I decided to order the stars into a k-dimensional tree for faster lookups. There are several <em>k-d</em> tree implementations available on Hackage. I settled for <a href="https://hackage.haskell.org/package/kdt">kdt</a>, which looked simple, flexible and stable.</p>
-<div class="figure">
-<img src="../images/wideangle1-bloomed-960.png" alt="A wide angle shot of the star field. Larger image" />
-<p class="caption">A wide angle shot of the star field. <a href="../images/wideangle1-bloomed.png">Larger image</a></p>
-</div>
+<figure>
+<img src="../images/wideangle1-bloomed-960.png" alt="A wide angle shot of the star field. Larger image" /><figcaption>A wide angle shot of the star field. <a href="../images/wideangle1-bloomed.png">Larger image</a></figcaption>
+</figure>
 <p>The construction of the <em>k-d</em> tree of <span class="math inline">\(n\)</span> stars is approximately a <span class="math inline">\(\mathcal{O}(n \log n)\)</span> operation, and in practice it took about half a minute on my computer. It’s a one time thing, so I didn’t definitely want to do it every time the program was run. I decided to use <a href="https://hackage.haskell.org/package/kdt">cereal</a> to serialize the tree and save it to a file in binary form. The datypes in kdt didn’t directly lend themselves to serialization: I had to <a href="https://github.com/flannelhead/kdt">fork</a> kdt and expose some of the datatypes in order to derive the <code>Serialize</code> typeclass for them. However, this wasn’t a very big deal. Stack made it very easy to use the fork instead of the official package in LTS Haskell. If you know how to work around this without modifying the package, please contact me!</p>
 <p><em>EDIT</em>: The maintainer of <code>kdt</code> kindly upgraded the upstream package to make the necessary types visible. The fork is not required any more.</p>
 <h3 id="experiment-automatic-differentiation">Experiment: automatic differentiation</h3>
@@ -87,7 +83,7 @@
 
         <div id="footer">
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" /></a><br />Except where otherwise noted, the content is licensed under a<br /><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br />
-            &copy; 2017 Sakari Kapanen
+            &copy; 2018 Sakari Kapanen
         </div>
         
         <script type="text/x-mathjax-config">

@@ -51,10 +51,9 @@ Your browser doesn’t support HTML5 video. <a href="https://www.youtube.com/wat
 <p>I’m using a 2-cell LiPo battery for powering the robot. It gives ~8.4 volts when fully charged. The battery voltage is monitored via the analog input of the ESP8266, and there’s an optional feature to cut off the motors when the battery voltage falls under a certain threshold. That’s common practice used with LiPo batteries. The analog input range is 0-1 volts. On the D1 mini board, there already is a voltage divider with a ratio of 1:3.3. Hence I only had to add one resistor to modify the ratio to 1:10, which scales the battery voltage to fit the analog input range.</p>
 <p>Finally, two WS2812B NeoPixels are added as the “eyes” of the robot. They have proven quite useful for reporting the current state of the robot (if it has fallen, if there’s OTA update in progress etc.)</p>
 <p>There’s not much to say about the mechanics, other that that optimization of size and weight were set as design goals. The prototype body was built out of some pieces of 4mm plywood and glued together with epoxy.</p>
-<div class="figure">
-<img src="../images/espway-portrait.jpg" alt="A general view of the robot" />
-<p class="caption">A general view of the robot</p>
-</div>
+<figure>
+<img src="../images/espway-portrait.jpg" alt="A general view of the robot" /><figcaption>A general view of the robot</figcaption>
+</figure>
 <h3 id="software-platform">Software platform</h3>
 <p>Nowadays there is a wealth of resources and support for developing software on the ESP8266. There are two SDKs offered by the manufacturer Espressif, one with a RTOS and the other one with no operating system. There is also an <a href="https://github.com/esp8266/arduino">Arduino core</a>, the <a href="http://simba-os.readthedocs.io/en/latest/">Simba</a> cross-platform RTOS framework and <a href="http://micropython.org/">MicroPython</a>. New languages and frameworks seem to pop out every now and then, which is great!</p>
 <p>Some prototyping for this robot was done on the Arduino core, using <a href="http://platformio.org/">PlatformIO</a> as the build system. The prototyping work can be found in the <a href="https://github.com/flannelhead/espway/tree/pio">corresponding branch</a> of the GitHub repo.</p>
@@ -62,15 +61,13 @@ Your browser doesn’t support HTML5 video. <a href="https://www.youtube.com/wat
 <h3 id="mobile-web-ui">Mobile web UI</h3>
 <p>After powering on the robot and connecting a client device to the WiFi access point, one can open the user interface with a web browser at the default IP address <code>192.168.4.1</code>.</p>
 <p>I tried to keep the UI as simple as possible. It essentially consists of a virtual “joystick” drawn on a HTML5 canvas. On a touch device such as a mobile phone, it feels quite intuitive.</p>
-<div class="figure">
-<img src="../images/espway-steering.png" alt="The user interface used for steering." />
-<p class="caption">The user interface used for steering.</p>
-</div>
+<figure>
+<img src="../images/espway-steering.png" alt="The user interface used for steering." /><figcaption>The user interface used for steering.</figcaption>
+</figure>
 <p>There is also a UI for on-line tuning of the robot’s PID parameters at the url <code>/pid</code>. It is a work in progress, but it’s already in a semi-usable state. It essentially allows tuning the robot in one pass without re-flashing the firmware every time the parameters are changed. One can save the tuned parameters to the flash memory via the UI.</p>
-<div class="figure">
-<img src="../images/espway-pid-tuning.png" alt="The initial PID tuning user interface." />
-<p class="caption">The initial PID tuning user interface.</p>
-</div>
+<figure>
+<img src="../images/espway-pid-tuning.png" alt="The initial PID tuning user interface." /><figcaption>The initial PID tuning user interface.</figcaption>
+</figure>
 <h3 id="low-latency-communications-via-a-websocket">Low latency communications via a WebSocket</h3>
 <p>Probably the most interesting part of this project is the method of achieving low latency remote control.</p>
 <p>Traditionally people have been implementing some kind of HTTP APIs on the ESP8266. It means that there’s a separate URL for each command. E.g. for a robot car, there would be URLs like <code>/forward</code>, <code>/backward</code>, <code>/stop</code>, <code>/turn-left</code>, <code>/turn-right</code> etc. The client application would then make <a href="https://en.wikipedia.org/wiki/Ajax_%28programming%29">AJAX</a> requests to control the robot. However, that means there would be a TCP connection opened and a HTTP header parsed on every command. That introduces unnecessary overhead and latency. The control would not be very smooth that way.</p>
@@ -86,7 +83,7 @@ Your browser doesn’t support HTML5 video. <a href="https://www.youtube.com/wat
 <h3 id="cascade-pid-control">Cascade PID control</h3>
 <p>How does the robot actually maintain the balance? So far we have a nice estimate of the orientation of the robot. It has to be somehow translated to a suitable motor output signal.</p>
 <p>There are two questions to answer:</p>
-<ol style="list-style-type: decimal">
+<ol type="1">
 <li>What should the tilt angle of the robot be in order to stay balanced?</li>
 <li>What should the motor output power be to achieve the desired tilt angle?</li>
 </ol>
@@ -113,7 +110,7 @@ Your browser doesn’t support HTML5 video. <a href="https://www.youtube.com/wat
 
         <div id="footer">
             <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" /></a><br />Except where otherwise noted, the content is licensed under a<br /><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.<br />
-            &copy; 2017 Sakari Kapanen
+            &copy; 2018 Sakari Kapanen
         </div>
         
     </body>
