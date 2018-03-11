@@ -100,7 +100,12 @@ unlike Espressif's macro-heavy "libraries" which look like they were never meant
 to face the general public.
 
 esp-open-rtos has also a couple of active contributors, some investing large
-amounts of time in reverse-engineering parts of the original SDK, driving the 
+amounts of time in reverse-engineering parts of the original SDK, driving the
+environment towards the upstream versions of the software components used, e.g.
+lwIP and FreeRTOS, which are nowadays consistently kept up to date within the
+framework. This helps us avoid some of the long-standing bugs in the old
+version of lwIP used in the official SDKs. Being closer to upstream code also
+gives better stability and new features.
 
 Note: despite my slight ranting about Espressif's SDK work, I'm pretty
 impressed with their investment in the ESP32 support! I guess they've learned
