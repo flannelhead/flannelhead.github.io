@@ -3,6 +3,11 @@ import Data.Monoid ((<>))
 import Hakyll
 import Text.Pandoc.Options
 
+brokenLinks =
+    [ ("projects/blackstar.html", "/posts/2016-03-11-blackstar.html")
+    , ("projects/espway.html", "/posts/2018-03-11-evolving-espway.html")
+    ]
+
 main :: IO ()
 main = hakyll $ do
     let pandocMathCompiler =
@@ -44,8 +49,9 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
 
-
     match "templates/*" $ compile templateCompiler
+
+    version "redirects" $ createRedirects brokenLinks
 
 
 postCtx :: Context String
