@@ -1,6 +1,5 @@
 ---
-title: Blackstar
-synopsis: Raytracing black holes with Haskell
+title: "Blackstar: raytracing black holes with Haskell"
 math: true
 ---
 
